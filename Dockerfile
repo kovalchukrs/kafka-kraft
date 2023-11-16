@@ -18,4 +18,5 @@ WORKDIR $KAFKA_HOME
 RUN $KAFKA_HOME/bin/kafka-storage.sh format -t $KAFKA_CLUSTER_ID -c $KAFKA_HOME/config/kraft/server.properties && \
     sed -i 's/tmp/opt/' config/kraft/server.properties && \
     $KAFKA_HOME/bin/kafka-storage.sh format --cluster-id $KAFKA_CLUSTER_ID --config $KAFKA_HOME/config/kraft/server.properties
+EXPOSE 9092 9093
 CMD [ "/bin/bash" "-c" "$KAFKA_HOME/bin/kafka-server-start.sh -daemon $KAFKA_HOME/config/kraft/server.properties"]
